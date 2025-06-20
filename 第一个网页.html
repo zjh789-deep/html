@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>我的个人主页</title>
+    <style>
+
+
+        .image-label {
+            font-size: 20px;  /* 放大文字 */
+            font-weight: bold;
+            color: #222;
+            margin-bottom: 10px;
+        }
+
+        .icon-img {
+            width: 100px;  /* 放大图像 */
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+        .icon-img:hover {
+            transform: scale(1.1);
+        }
+        .heart {
+            font-size: 28px;
+            color: red;
+            line-height: 100px;
+        }
+        body {
+            font-family: "微软雅黑", sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            color: white;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .section-title {
+            color: #4CAF50;
+            margin-top: 30px;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 5px;
+        }
+
+        .contact {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #888;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .interest-images {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+
+        footer {
+            background-color: #ddd;
+            padding: 10px;
+            text-align: center;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div>
+        <img src="me.jpg" alt="我的头像" width="120" style="border-radius: 50%; margin-bottom: 10px;">
+        <h1>你好，同学</h1>
+    </div>
+</header>
+
+
+
+<main class="container">
+    <p>山河远阔，人间星河，无一是你，无一不是你</p>
+
+    <h2 class="section-title">🎯 我的兴趣</h2>
+    <p>🌱 编程入门中（Java / Python / HTML / JS）<br>
+        🧠 每天在想如何让 y 的三次方 搭理我<br>
+        🕹 有时也玩 无脑游戏<br>
+        📚 偶尔看点科幻和技术书籍，比如《富婆如何爱上我》</p>
+    <div class="interest-images">
+        <div class="image-item">
+            <div class="image-label">喜欢<br>👇</div>
+            <img src="1.jpg" alt="喜欢" title="喜欢" class="icon-img">
+        </div>
+
+        <div class="heart">❤️</div>
+
+        <div class="image-item">
+            <div class="image-label">更喜欢<br>👇</div>
+            <img src="2.jpg" alt="更喜欢" title="更喜欢" class="icon-img">
+        </div>
+
+        <div class="heart">❤️</div>
+
+        <div class="image-item">
+            <div class="image-label">最喜欢<br>👇</div>
+            <img src="3.jpg" alt="最喜欢" title="最喜欢" class="icon-img">
+        </div>
+    </div>
+
+    <h2 class="section-title">📫 联系方式</h2>
+    <div class="contact">
+        邮箱：example@example.com<br>
+        GitHub：<a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a><br>
+        微信 / QQ：3626766158
+    </div>
+
+    <!-- 视频按钮 -->
+    <div style="text-align: center; margin-top: 40px;">
+        <button onclick="showVideo('video1.mp4')">观看 视频1</button>
+        <button onclick="showVideo('video2.mp4')">观看 视频2</button>
+        <button onclick="showVideo('video3.mp4')">观看 视频3</button>
+    </div>
+
+    <!-- 视频模态框 -->
+    <div id="videoModal" style="display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.7); justify-content: center; align-items: center;">
+        <div style="position: relative; background: #fff; padding: 20px; border-radius: 10px;">
+            <span onclick="closeVideo()" style="position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer;">×</span>
+            <video id="videoPlayer" controls width="600">
+                <source id="videoSource" src="" type="video/mp4">
+                您的浏览器不支持 video 标签。
+            </video>
+        </div>
+    </div>
+    <script>
+        function showVideo(videoFile) {
+            document.getElementById('videoSource').src = videoFile;
+            const video = document.getElementById('videoPlayer');
+            video.load();  // 重新加载新的视频
+            document.getElementById('videoModal').style.display = 'flex';
+        }
+
+        function closeVideo() {
+            const video = document.getElementById('videoPlayer');
+            video.pause();  // 停止播放
+            video.currentTime = 0;  // 回到开头
+            document.getElementById('videoModal').style.display = 'none';
+        }
+    </script>
+
+
+</main>
+
+<footer>
+    &copy; 想念yyy
+</footer>
+
+</body>
+</html>
